@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I'm Sorry</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #e6ccff);
+      color: #4a2c2c;
+      text-align: center;
+      padding: 50px;
+      overflow-y: scroll;
+      animation: fadeIn 2s ease-in;
+    }
+    h1 {
+      color: #b30086;
+      font-size: 36px;
+      text-shadow: 2px 2px 6px rgba(179, 0, 134, 0.3);
+      animation: pulse 3s infinite;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 20px auto;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(128, 0, 128, 0.2);
+      animation: slideUp 1.5s ease-out;
+    }
+    img {
+      margin: 20px auto;
+      display: block;
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(179, 0, 134, 0.4);
+      transition: transform 0.5s ease;
+    }
+    img:hover { transform: scale(1.05); }
+    .error-box {
+      background: linear-gradient(to right, #f3c6e6, #e0a3d3);
+      color: #5a003f;
+      border: 2px solid #d966ff;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 600px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(128, 0, 128, 0.3);
+      animation: bounceIn 1.5s ease;
+    }
+    .buttons { margin-top: 20px; }
+    button {
+      background: linear-gradient(to right, #ff80ab, #d966ff);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.5s ease;
+      box-shadow: 0 4px 10px rgba(128, 0, 128, 0.3);
+    }
+    button:hover {
+      background: linear-gradient(to right, #f06292, #b84dff);
+      transform: scale(1.1);
+    }
+    #message { display: none; }
+    #forgiveBox { display: none; margin-top: 30px; }
+    footer {
+      margin-top: 40px;
+      font-style: italic;
+      color: #6d4c41;
+      font-size: 18px;
+      animation: fadeIn 3s ease-in;
+    }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes pulse {
+      0% { text-shadow: 2px 2px 6px rgba(179, 0, 134, 0.3); }
+      50% { text-shadow: 2px 2px 12px rgba(179, 0, 134, 0.6); }
+      100% { text-shadow: 2px 2px 6px rgba(179, 0, 134, 0.3); }
+    }
+  </style>
+</head>
+<body>
+  <h1>System Alert</h1>
+  
+  <!-- Error Message -->
+  <div class="error-box" id="errorBox">
+    ❌ Error: Communication Failure Detected  
+    Reason: I didn’t update you when I should have.  
+    Do you want to see my apology?
+    <div class="buttons">
+      <button id="yesBtn" onclick="showMessage()">Yes</button>
+      <button onclick="growYes()">No</button>
+    </div>
+  </div>
+  
+  <!-- Hidden Apology Message -->
+  <div id="message">
+    <img src="https://media.tenor.com/_ELwf7lNhg0AAAAi/cute.gif" alt="Sorry GIF">
+    
+    <p>
+      My love, I owe you more than just a simple “sorry.”  
+      I know that my silence and failure to update you made you feel neglected,  
+      and that is the last thing I ever want to do. You deserve my time,  
+      my words, and my presence—not uncertainty or distance.  
+
+      I regret every moment I left you wondering, and I want you to know  
+      that it wasn’t because I don’t care. In fact, it’s the opposite—  
+      you mean so much to me that I should have made the effort to keep you close,  
+      to share even the smallest details of my day, and to remind you constantly  
+      that you are in my thoughts.  
+
+      I promise to do better. I promise to keep you updated,  
+      to let you know where I am, what I’m doing, and how I’m feeling.  
+      Not because you demand it, but because you deserve it.  
+      Because you are my partner, my love, and my safe place.  
+
+      Please forgive me for the times I fell short.  
+      I will learn from this, and I will prove to you that my love  
+      is not just in words, but in actions—consistent, honest, and true.  
+      You are my heart, and I never want you to feel forgotten again.
+    </p>
+    
+    <img src="https://media.tenor.com/rO1D1Ljvc94AAAAi/please-asking.gif" alt="Romantic Hug GIF">
+    <img src="https://media.tenor.com/k3vWOPsbToUAAAAi/sorry.gif" alt="Love Hearts GIF">
+    
+    <!-- Forgive Me Box -->
+    <div id="forgiveBox" class="error-box">
+      💖 Do you forgive me?  
+      <div class="buttons">
+        <button onclick="alert('Thank you, lablab! 😽😽😽😽😽')">Yes</button>
+        <button onclick="alert('I’ll keep trying until you do 😔')">No</button>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Forever yours, Your Renren</p>
+    </footer>
+  </div>
+  
+  <script>
+    let growCount = 1;
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("errorBox").style.display = "none"; // hide error box
+      document.getElementById("forgiveBox").style.display = "block"; // show forgive me box
+    }
+    function growYes() {
+      let yesBtn = document.getElementById("yesBtn");
+      growCount += 0.5;
+      yesBtn.style.transform = `scale(${growCount})`;
+    }
+  </script>
+</body>
+</html>
